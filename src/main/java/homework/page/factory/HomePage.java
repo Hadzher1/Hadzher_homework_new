@@ -1,5 +1,6 @@
 package homework.page.factory;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,12 @@ public class HomePage {
         return wait.until(ExpectedConditions.urlToBe(HomePage.PAGE_URL));
     }
 
+    public boolean isElementDisplayed() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement homeIcon = driver.findElement(By.id("homeIcon"));
+        Boolean isSearchBoxDisplayed = homeIcon.isDisplayed();
+        return isSearchBoxDisplayed;
+    }
 
     public void navigateTo() {
         this.driver.get(PAGE_URL);

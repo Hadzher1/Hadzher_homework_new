@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -43,12 +44,6 @@ public class TestLogo {
         homePage.navigateTo();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        boolean t = driver.findElement(By.id("homeIcon")).isDisplayed();
-        if (t) {
-            System.out.println("Element is dispalyed");
-        } else {
-            System.out.println("Element is not dispalyed");
-        }
-        driver.quit();
+        Assert.assertTrue(homePage.isElementDisplayed(), "The element is not displayed!");
     }
 }
